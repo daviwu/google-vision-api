@@ -12,7 +12,7 @@ $ sudo apt-get install python3 python3-venv python3-pip
 $ cd /path/to/my/workspace/
 $ git clone https://github.com/daviwu/google-vision-api
 $ cd google-vision-api
-$ export GOOGLE_APPLICATION_CREDENTIALS="google_vision/credentials/mltest-9b3e9fa1939d.json"
+$ export GOOGLE_APPLICATION_CREDENTIALS="./google_vision/credentials/mltest-9b3e9fa1939d.json"
 $ pyvenv venv
 $ source venv/bin/activate
 $ (venv) pip install -r requirements.txt
