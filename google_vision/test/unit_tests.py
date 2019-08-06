@@ -11,7 +11,6 @@ class TestClass(unittest.TestCase):
         response = requests.get(url)
         self.assertEqual(response.status_code, 200)
 
-
     def test_01_example(self):
         url = server_url + "/detect_objects"
         image_uri = "https://www.hlaw.ca/wp-content/uploads/2009/01/15.09.24-67201591.jpg"
