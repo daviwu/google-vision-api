@@ -1,9 +1,7 @@
 import logging
-import traceback
 
 from flask_restplus import Api
-from flask_query_api import settings
-from sqlalchemy.orm.exc import NoResultFound
+from google_vision import settings
 
 log = logging.getLogger(__name__)
 
