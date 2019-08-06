@@ -40,3 +40,5 @@ or alternatively, create service in kubernetes and increase allocation of pods.
 * This implementation assumes the Google Vision API `label_detection` texts of labels of `car`, `traffic light`, etc does not change.
 
 * According to the specification, GET requests usually does not go with -d option but is allowed. Therefore a POST request of identical parameters is also implemented
+
+* Assume that picture for object detection is not adversarial (e.g., https://www.researchgate.net/figure/Left-Adversarial-examples-in-physical-domain-remain-adversarial-at-multiple-angles-Top_fig14_320582292)
