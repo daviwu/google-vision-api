@@ -1,16 +1,9 @@
 import logging
-import io
-import os
 
-from flask import request, jsonify
 from flask_restplus import Resource, fields
-from flask_query_api.api.query.sequential_search import query
 from google_vision.api.restplus import api
 from google.cloud import vision
-from google.cloud.vision import types
 from flask_restplus import reqparse
-
-
 
 log = logging.getLogger(__name__)
 
