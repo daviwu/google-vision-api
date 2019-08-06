@@ -43,4 +43,4 @@ or alternatively, create service in kubernetes and increase allocation of pods.
 
 * Assume that picture for object detection is not adversarial (e.g., https://www.researchgate.net/figure/Left-Adversarial-examples-in-physical-domain-remain-adversarial-at-multiple-angles-Top_fig14_320582292)
 
-* Some corner cases for pictures are tested (see unit tests). For example, batmobiles are correctly identified as cars by Google Vision, and Lego batmobiles are correctly identified as NOT a car. A parade not on streets is correctly identified as not a pedestrian.
+* Some corner cases for pictures are tested (see unit tests). For example, batmobiles are correctly identified as cars by Google Vision (confidence > .9), and Lego batmobiles are correctly identified as NOT a car (confidence < .9). A parade not on streets is correctly identified as not a pedestrian.
