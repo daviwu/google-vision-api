@@ -5,13 +5,14 @@ server_url = "http://localhost:5000"
 
 class TestClass(unittest.TestCase):
 
-    def test_00_server_is_up_and_running(self):
+    def test_000_server_is_up_and_running(self):
         # print ("test_00")
         url = server_url + "/swagger_doc/"
         response = requests.get(url)
         self.assertEqual(response.status_code, 200)
 
-    def test_01_example(self):
+
+    def test_001_example(self):
         url = server_url + "/detect_objects"
         image_uri = "https://www.hlaw.ca/wp-content/uploads/2009/01/15.09.24-67201591.jpg"
         response = requests.get(url, data={"uri": image_uri})
@@ -19,6 +20,12 @@ class TestClass(unittest.TestCase):
         self.assertEqual(resp['car'], 'true')
         self.assertEqual(resp['pedestrian'], 'true')
         self.assertEqual(resp['traffic_light'], 'false')
+
+    def test_01_alternative_url_with_slash(self):
+        url = server_url + "/detect_objects/"
+        image_uri = "https://www.hlaw.ca/wp-content/uploads/2009/01/15.09.24-67201591.jpg"
+        response = requests.get(url, data={"uri": image_uri})
+        self.assertEqual(response.status_code, 404)
 
     def test_02_no_data(self):
         url = server_url + "/detect_objects"
