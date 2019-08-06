@@ -31,7 +31,7 @@ swagger doc is at `localhost:5000/swagger_doc`
 
 ## Discussions and Limitations
 
-* The server only accept sync requests. This is a problem for a production environment since Google Api responces are slow (>3s). To allow async requests with multiple workers, use gunicorn such as
+* The server only accept sync requests. This is a problem for a production environment since Google Api responces could be slow if the file is big (>3s). To allow async requests with multiple workers, use gunicorn such as
 ```
 gunicorn -b 0.0.0.0:8080 app:app -w 5 -k eventlet --timeout 60 --keep-alive 30
 ```
