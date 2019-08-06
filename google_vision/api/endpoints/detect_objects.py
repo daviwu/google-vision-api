@@ -37,7 +37,7 @@ class DetectObjects(Resource):
 
         args = parser.parse_args()
         if not args['uri']:
-            return "Missing required parameter: uri", 401
+            return "Missing required parameter: uri", 400
 
         # Instantiates a client
         client = vision.ImageAnnotatorClient()
@@ -46,6 +46,8 @@ class DetectObjects(Resource):
         image.source.image_uri = args['uri']
 
         response = client.label_detection(image=image)
+        if response.error.code != 0:
+            return response.error.message, 400
         labels = response.label_annotations
 
         api_response = {}

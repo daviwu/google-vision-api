@@ -11,6 +11,7 @@ class TestClass(unittest.TestCase):
         response = requests.get(url)
         self.assertEqual(response.status_code, 200)
 
+
     def test_01_example(self):
         url = server_url + "/detect_objects"
         image_uri = "https://www.hlaw.ca/wp-content/uploads/2009/01/15.09.24-67201591.jpg"
@@ -19,6 +20,29 @@ class TestClass(unittest.TestCase):
         self.assertEqual(resp['car'], 'true')
         self.assertEqual(resp['pedestrian'], 'true')
         self.assertEqual(resp['traffic_light'], 'false')
+
+    def test_02_no_data(self):
+        url = server_url + "/detect_objects"
+        response = requests.get(url)
+        resp = response.json()
+        self.assertEqual(response.status_code, 400)
+
+    def test_03_invalid_url(self):
+        url = server_url + "/detect_objects"
+        image_uri = "https://www.some.ca/bogus/url/file.jpg"
+        response = requests.get(url, data={"uri": image_uri})
+        resp = response.json()
+        self.assertEqual(response.status_code, 400)
+
+    def test_04_post(self):
+        url = server_url + "/detect_objects"
+        image_uri = "https://www.hlaw.ca/wp-content/uploads/2009/01/15.09.24-67201591.jpg"
+        response = requests.post(url, data={"uri": image_uri})
+        resp = response.json()
+        self.assertEqual(resp['car'], 'true')
+        self.assertEqual(resp['pedestrian'], 'true')
+        self.assertEqual(resp['traffic_light'], 'false')
+
 
 if __name__ == '__main__':
     unittest.main()
